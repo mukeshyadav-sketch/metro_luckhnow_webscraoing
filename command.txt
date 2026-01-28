@@ -1,0 +1,37 @@
+source venv/bin/activate
+
+python main.py 
+
+python fare_collector.py                                             
+
+
+
+# to acces the db 
+
+sqlite3 metro.db
+
+
+SELECT * FROM stations;
+SELECT * FROM fares;
+
+
+
+// this is tds 
+SELECT
+    s1.st_name AS from_station,
+    s2.st_name AS to_station,
+    f.fare
+FROM fares f
+JOIN stations s1 ON f.from_station_id = s1.id
+JOIN stations s2 ON f.to_station_id = s2.id
+WHERE s1.st_name = 'CCS AIRPORT'
+  AND s2.st_name = 'ALAMBAGH';
+
+
+
+for a given staion id from to  
+
+SELECT fare
+FROM fares
+WHERE from_station_id = 12
+  AND to_station_id = 13;  
